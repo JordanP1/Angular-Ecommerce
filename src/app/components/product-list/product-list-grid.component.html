@@ -15,6 +15,11 @@
                         <a href="#" class="primary-btn">Add to Cart</a>
                     </div>
                 </div>
+
+                <!-- If products are empty, display a message -->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    No products found.
+                </div>
             </div>
         </div>
     </div>
