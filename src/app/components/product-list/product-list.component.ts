@@ -11,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductListComponent implements OnInit {
   products?: Product[];
   currentCategoryId?: number;
+  currentCategoryName?: string;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
@@ -33,9 +34,18 @@ export class ProductListComponent implements OnInit {
       } else {
         this.currentCategoryId = 1;
       }
+
+      //Get the name param
+      const name: string | null = this.route.snapshot.paramMap.get('name');
+      if (name != null) {
+        this.currentCategoryName = name;
+      } else {
+        this.currentCategoryName = 'Books';
+      }
     } else {
       //No category id available
       this.currentCategoryId = 1;
+      this.currentCategoryName = 'Books';
     }
 
     //Get product for category id
